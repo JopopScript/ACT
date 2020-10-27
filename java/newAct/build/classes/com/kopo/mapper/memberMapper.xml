@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kopo.mapper.memberMapper">
+	
+	<insert id="insert">
+		 insert into act_data (id,name,school_id,date_time,temperature) values (#{id},#{name},#{school_id},#{date_time},#{temperature}) 
+	</insert>
+	
+	<select id="select" resultType="MemberVO">
+		select * from act_data
+	</select>
+	
+	<select id="selectOne" resultType="MemberVO">
+		select * from act_data order by id desc limit 1;
+	</select>
+	
+	<delete id="deleteOne">
+		delete from act_data where id = #{size};
+	</delete>
+
+	<select id="selectStatic" resultType="int">
+		select id from act_data order by id desc limit 1;
+	</select>
+
+	<select id="selectTemperature" resultType="float">
+		 select temperature from act_data order by id desc limit 1;
+	</select>
+	
+	<select id="getRecordCount" resultType="int">
+		select COUNT(*) from act_data;
+	</select>
+</mapper>
+
